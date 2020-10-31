@@ -9,6 +9,7 @@ public class Main {
                 new Book(1, "Приключения", "Картошка"),
                 new Book(2, "Огурец", "Помидорович")
         ));
+
         try {
             Library.save("lib.dat", library);
         }catch (IOException error){

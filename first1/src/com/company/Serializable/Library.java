@@ -11,7 +11,9 @@ public class Library implements Externalizable {
         this.title = title;
         this.bookList = bookList;
     }
-    public Library(){}
+
+    public Library() {
+    }
 
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
@@ -26,14 +28,15 @@ public class Library implements Externalizable {
     }
 
     public static void save(String path, Library library) throws IOException {
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(path));
-        objectOutputStream.writeObject(library);
-        objectOutputStream.close();
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(path));) {
+            objectOutputStream.writeObject(library);
+        }
     }
 
     public static Library load(String path) throws IOException, ClassNotFoundException {
-        ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(path));
-        return (Library) objectInputStream.readObject();
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(path))) {
+            return (Library) objectInputStream.readObject();
+        }
     }
 
     @Override
