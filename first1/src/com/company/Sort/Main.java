@@ -1,5 +1,6 @@
 package com.company.Sort;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
@@ -9,11 +10,11 @@ public class Main {
         for (int i=0;i<array.length;i++)
             array[i]=random.nextInt();
         System.out.println("Пузырек:");
-        new Bubble(array);
+        new Bubble(array.clone());
         System.out.println("Вставки:");
-        new Inserts(array);
+        new Inserts(array.clone());
         System.out.println("Выбором:");
-        new Choice(array);
+        new Choice(array.clone());
 
     }
 }

@@ -19,6 +19,5 @@ public class Inserts extends Sortinger{
             }
             array[j+1] = current;
         }
-        System.out.println(Arrays.toString(array));
     }
 }
