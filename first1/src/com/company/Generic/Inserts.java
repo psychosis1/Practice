@@ -1,24 +1,22 @@
-package com.company.Sort;
+package com.company.Generic;
 
 import java.util.Arrays;
 
-public class Inserts extends Sortinger{
-
-    public Inserts(int[] array) {
+public class Inserts <T extends Number & Comparable<T>> extends Sortinger<T>{
+    public Inserts(T[] array) {
         sortWithTime(array);
     }
 
     @Override
-    void sort(int[] array) {
+    void sort(T[] array) {
         for (int i = 1; i < array.length; i++) {
-            int current = array[i];
+            T current = array[i];
             int j = i - 1;
-            while(j >= 0 && current < array[j]) {
+            while(j >= 0 && current.compareTo(array[j]) < 0) {
                 array[j+1] = array[j];
                 j--;
             }
             array[j+1] = current;
         }
-        System.out.println(Arrays.toString(array));
     }
 }
